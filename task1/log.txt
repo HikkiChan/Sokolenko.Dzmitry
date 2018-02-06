@@ -1,0 +1,5 @@
+commit 696326d093ee7f89948eb8247b369f0a1361ff00 (HEAD -> master)
+Author: Sokolenko.Dzmitry <blackvehkleja@gmail.com>
+Date:   Tue Feb 6 11:44:07 2018 +0300
+
+    add .gitignore
