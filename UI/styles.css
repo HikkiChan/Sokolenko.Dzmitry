@@ -171,9 +171,9 @@ button, .description, .photoBox > img, input[type="text"] {
     transition: 1s;
 }
 
-.photoBox > img:hover {
-    max-height: 400px;
-}
+/*.photoBox > img:hover {*/
+    /*max-height: 400px;*/
+/*}*/
 
 input[type="text"]:focus {
     width: 100%;

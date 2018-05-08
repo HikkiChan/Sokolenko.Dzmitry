@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="reset.css">
     <link href="styles.css" type="text/css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+    <script src="photoPosts.js"></script>
+    <script src="dom.js"></script>
 </head>
 
 
@@ -27,106 +29,58 @@
 </form>
 <div class="align-border">
     <div class="content">
-        <div class="centralInfo align-center">
-            <div class="photoBox blockWbg">
+        <div class="centralInfo align-center" id="content">
+
+
+            <template id="photobox">
+                <div class="photoBox blockWbg">
+                    <img alt="">
+                    <div class="description photoBox button">
+                    <span class="description-capture">
+                            Description:
+                    </span>
+                        <span class="description">
+                            It's me.
+                    </span>
+                    </div>
+                </div>
+            </template>
+
+
+            <div class="photoBox blockWbg" id="1">
                 <img src="01.jpg" alt="">
                 <div class="description photoBox button">
-                        <span class="description-capture">
+                    <span class="description-capture">
                             Description:
-                        </span>
+                    </span>
                     <span class="description">
                             It's me.
-                        </span>
+                    </span>
                 </div>
             </div>
-            <div class="photoBox blockWbg">
+            <div class="photoBox blockWbg" id="2">
                 <img src="02.jpg" alt="">
                 <div class="description photoBox button">
-                        <span class="description-capture">
+                    <span class="description-capture">
                             Description:
-                        </span>
+                    </span>
                     <span class="description">
                             It's me.
-                        </span>
+                    </span>
                 </div>
             </div>
-            <div class="photoBox blockWbg">
+            <div class="photoBox blockWbg" id="3">
                 <img src="03.jpg" alt="">
                 <div class="description photoBox button">
-                        <span class="description-capture">
+                    <span class="description-capture">
                             Description:
-                        </span>
+                    </span>
                     <span class="description">
                             It's me.
-                        </span>
+                    </span>
                 </div>
             </div>
-            <div class="photoBox blockWbg">
-                <img src="04.jpg" alt="">
-                <div class="description photoBox button">
-                        <span class="description-capture">
-                            Description:
-                        </span>
-                    <span class="description">
-                            It's me.
-                        </span>
-                </div>
-            </div>
-            <div class="photoBox blockWbg">
-                <img src="05.jpg" alt="">
-                <div class="description photoBox button">
-                        <span class="description-capture">
-                            Description:
-                        </span>
-                    <span class="description">
-                            It's me.
-                        </span>
-                </div>
-            </div>
-            <div class="photoBox blockWbg">
-                <img src="06.jpg" alt="">
-                <div class="description photoBox button">
-                        <span class="description-capture">
-                            Description:
-                        </span>
-                    <span class="description">
-                            It's me.
-                        </span>
-                </div>
-            </div>
-            <div class="photoBox blockWbg">
-                <img src="07.jpg" alt="">
-                <div class="description photoBox button">
-                        <span class="description-capture">
-                            Description:
-                        </span>
-                    <span class="description">
-                            It's me.
-                        </span>
-                </div>
-            </div>
-            <div class="photoBox blockWbg">
-                <img src="08.jpg" alt="">
-                <div class="description photoBox button">
-                        <span class="description-capture">
-                            Description:
-                        </span>
-                    <span class="description">
-                            It's me.
-                        </span>
-                </div>
-            </div>
-            <div class="photoBox blockWbg">
-                <img src="09.jpg" alt="">
-                <div class="description photoBox button">
-                        <span class="description-capture">
-                            Description:
-                        </span>
-                    <span class="description">
-                            It's me.
-                        </span>
-                </div>
-            </div>
+
         </div>
 
         <div class="big-margin photoBox recommend ">
@@ -134,16 +88,18 @@
             <div class="photoBox button">
                 <div>Hello, User</div>
             </div>
-            <button type="submit" class="photoBox button">
+            <button type="submit" class="photoBox button" onclick="AddPost()">
                 <div>Add post</div>
             </button>
-            <button type="submit" class="photoBox button">
+            <button type="submit" class="photoBox button" onclick="ChangePostPost()">
                 <div>Change post</div>
             </button>
-            <button type="submit" class="photoBox button">
+            <button type="submit" class="photoBox button" onclick="DeletePost(1)">
                 <div>Delete post</div>
             </button>
-
+            <button type="submit" class="photoBox button" onclick="UpdatePost()">
+                <div>Update posts</div>
+            </button>
         </div>
     </div>
     <footer class="footer">
