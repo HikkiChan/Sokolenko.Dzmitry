@@ -145,52 +145,12 @@ var photoPosts = (function() {
         return a.createdAt - b.createdAt;
     }
 
-
-
     function validatePhotoPost(post) {
         if (!post.description || post.description.length >= 200)
             return false;
         if (!post.createdAt || !post.author || !post.photoLink)
             return false;
         return post.author.length != 0 && post.photoLink.length != 0;
-    }
-
-    function getPhotoPosts(skip, top, filterConfig) {
-        if (filterConfig.author)
-            result = photoPosts.filter(function (a) {
-                return a.author == filterConfig.author;
-            });
-        if (filterConfig.createdAt)
-            result = photoPosts.filter(function (a) {
-                return a.createdAt == filterConfig.createdAt;
-            });
-        result.sort(compareDates);
-        return result.slice(skip, skip + top);
-    }
-
-    function addPhotoPost(photoPost) {
-        if (validatePhotoPost(photoPost)) {
-            photoPosts.push(photoPost);
-            return true;
-        }
-        return false;
-    }
-
-    function removePhotoPost(id) {
-        photoPosts.splice(photoPosts.indexOf(getPhotoPost(id)), 1);
-    }
-
-    function editPhotoPost(id, photoPost) {
-        post = getPhotoPost(id);
-        photoPost.createdAt = post.createdAt;
-        photoPost.author = post.author;
-        photoPost.id = post.id;
-        if (validatePhotoPost(photoPost)) {
-            post.description = photoPost.description;
-            post.photoLink = photoPost.photoLink;
-            return true;
-        }
-        return false;
     }
 
     return {
