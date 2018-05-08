@@ -3,7 +3,6 @@
 var usedPhotoPosts = [1, 2, 3]
 
 function UpdatePost() {
-
     var id = 1;
     var check = false;
     for (id; id < usedPhotoPosts.length+1; id++ ) {
@@ -21,12 +20,14 @@ function UpdatePost() {
         }
     }
 
-    if(id < photoPosts.length + 1) {
+    var lPP = photoPosts.getLength() + 1;
+
+    if(id < lPP) {
         var content = document.querySelector('template').content;
 
         usedPhotoPosts.push(id);
 
-        post = getPhotoPost(id);
+        post = photoPosts.getPhotoPost(id);
         var img = post.photoLink;
         var description = post.description;
         var idteg = content.querySelector('div.blockWbg');
@@ -50,16 +51,16 @@ function AddPost() {
         author: 'qwerty',
         photoLink: '../img/1.jpg'
     }
-    addPhotoPost(post);
+    photoPosts.addPhotoPost(post);
 }
 
 function DeletePost(id) {
 
-    removePhotoPost(id);
+    photoPosts.removePhotoPost(id);
     document.querySelector('.body > .align-border .content .centralInfo').removeChild();
 }
 
 function ChangePost() {
 
-    addPhotoPost(post);
+    photoPosts.addPhotoPost(post);
 }

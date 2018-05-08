@@ -1,4 +1,4 @@
-
+var photoPosts = (function() {
     var photoPosts = [
         {
             id: '1',
@@ -145,6 +145,16 @@
         return a.createdAt - b.createdAt;
     }
 
+
+
+    function validatePhotoPost(post) {
+        if (!post.description || post.description.length >= 200)
+            return false;
+        if (!post.createdAt || !post.author || !post.photoLink)
+            return false;
+        return post.author.length != 0 && post.photoLink.length != 0;
+    }
+
     function getPhotoPosts(skip, top, filterConfig) {
         if (filterConfig.author)
             result = photoPosts.filter(function (a) {
@@ -156,22 +166,6 @@
             });
         result.sort(compareDates);
         return result.slice(skip, skip + top);
-    }
-
-    function getPhotoPost(id) {
-        return photoPosts.find(
-            function (item, i, arr) {
-                return item.id == id;
-            }
-        )
-    }
-
-    function validatePhotoPost(post) {
-        if (!post.description || post.description.length >= 200)
-            return false;
-        if (!post.createdAt || !post.author || !post.photoLink)
-            return false;
-        return post.author.length != 0 && post.photoLink.length != 0;
     }
 
     function addPhotoPost(photoPost) {
@@ -198,6 +192,60 @@
         }
         return false;
     }
+
+    return {
+        getPhotoPost: function(id) {
+        return photoPosts.find(
+            function (item, i, arr) {
+                return item.id == id;
+            }
+        )
+    },
+
+        getPhotoPosts: function(skip, top, filterConfig) {
+        if (filterConfig.author)
+            result = photoPosts.filter(function (a) {
+                return a.author == filterConfig.author;
+            });
+        if (filterConfig.createdAt)
+            result = photoPosts.filter(function (a) {
+                return a.createdAt == filterConfig.createdAt;
+            });
+        result.sort(compareDates);
+        return result.slice(skip, skip + top);
+    },
+
+        addPhotoPost: function(photoPost) {
+        if (validatePhotoPost(photoPost)) {
+            photoPosts.push(photoPost);
+            return true;
+        }
+        return false;
+    },
+
+        removePhotoPost: function(id) {
+        photoPosts.splice(photoPosts.indexOf(getPhotoPost(id)), 1);
+    },
+
+        editPhotoPost: function(id, photoPost) {
+        post = getPhotoPost(id);
+        photoPost.createdAt = post.createdAt;
+        photoPost.author = post.author;
+        photoPost.id = post.id;
+        if (validatePhotoPost(photoPost)) {
+            post.description = photoPost.description;
+            post.photoLink = photoPost.photoLink;
+            return true;
+        }
+        return false;
+    },
+
+        getLength: function () {
+            return photoPosts.length;
+        }
+    }
+})();
+
 
 
 
