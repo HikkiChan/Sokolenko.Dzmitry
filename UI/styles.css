@@ -171,9 +171,10 @@ button, .description, .photoBox > img, input[type="text"] {
     transition: 1s;
 }
 
-/*.photoBox > img:hover {*/
-    /*max-height: 400px;*/
-/*}*/
+.photoBox > img{
+    flex-grow: 0;
+}
+
 
 input[type="text"]:focus {
     width: 100%;
@@ -182,4 +183,137 @@ input[type="text"]:focus {
 
 input[type="text"] {
     padding: 0 20px;
+}
+
+.wrapper {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #0808085b;
+
+    display: flex;
+}
+
+.center {
+    width: 1000px;
+    margin: auto;
+}
+
+.display-flex {
+    display: flex;
+}
+
+.display-flex-column {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.display-flex-row {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.right-panel.post {
+    width: 100%;
+}
+.center .photoBox {
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.wrapper-round {
+    flex-shrink: 0;
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.image > img {
+    max-width: 100%;
+}
+
+.small {
+    width: 70px;
+}
+
+/* div {
+    background: #2682ad49;
+} */
+
+.hashtags.photoBox.border-width {
+    box-sizing: border-box;
+    width: 97%;
+    padding: 15px;
+    border-radius: 40px;
+    background: #727272;
+}
+
+.image > img.post {
+    max-width: 500px;
+}
+
+input.hashtags.photoBox.border-width {
+    box-sizing: border-box;
+    width: 97%;
+    padding: 15px;
+    border-radius: 40px;
+    background: #e9e9e9;
+}
+
+textarea.description.photoBox {
+    height: calc(100% - 140px);
+
+}
+
+.description.photoBox {
+    box-sizing: border-box;
+    flex: 1;
+    width: 300px;
+}
+
+.line-horisontal {
+    width: 95%;
+    box-sizing: border-box;
+    height: 3px;
+    border-radius: 100%;
+    background: #000000;
+    margin: 10px 0;
+}
+
+.wrapper-right {
+    justify-content: space-around;
+    height: 90%;
+    box-sizing: border-box;
+}
+
+.wrapper > .center > .photoBox {
+    padding: 15px;
+    background: rgb(221, 221, 221);
+}
+
+.wrapper > .center > .photoBox > .image > .signature {
+    margin-top: 5px;
+}
+
+.right-panel {
+    margin: 0 0 0 20px;
+    justify-content: space-between;
+
+}
+
+.right-panel > .user > .signature {
+    margin-left: 10px;
+    font-size: 30px;
+    font-weight: 400;
+}
+
+.wrapper-right .post{
+    height: 100%;
+}
+
+.post form {
+    width: 100%;
 }

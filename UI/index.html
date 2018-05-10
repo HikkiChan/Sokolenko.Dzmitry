@@ -13,6 +13,64 @@
 
 
 <body>
+<div id="forms">
+
+    <template class="postUp">
+        <div class="wrapper" >
+            <div class="center">
+                <div class="photoBox">
+                    <div class="image display-flex display-flex-column">
+                        <img src="02.jpg" alt="" class="post">
+                        <div class="signature">12/12/2018</div>
+                    </div>
+                    <div class="right-panel post">
+                        <div class="display-flex display-flex-column wrapper-right">
+                            <form action="123" method="post">
+                                <input type="text" class="hashtags  photoBox border-width" placeholder="Post Name">
+                                <div class="line-horisontal"></div>
+                                <!--<input type="text" class="hashtags  photoBox border-width" placeholder="Tegs">-->
+                                <!--<div class="line-horisontal"></div>-->
+                                <textarea class="description photoBox" aria-valuetext="" placeholder="Description"></textarea>
+                                <div class="line-horisontal"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template class="vPost">
+        <div class="wrapper">
+            <div class="center">
+                <div class="photoBox">
+                    <div class="image display-flex display-flex-column">
+                        <img src="2.jpg" alt="">
+                        <div class="signature">12/12/2018</div>
+                    </div>
+                    <div class="right-panel">
+                        <div class="user display-flex display-flex-row">
+                            <div class="wrapper-round">
+                                <img class="small" src="2.jpg" alt="">
+                            </div>
+                            <div class="signature">NICK</div>
+                        </div>
+                        <div class="display-flex display-flex-column wrapper-right">
+                            <!--<div class="hashtags  photoBox border-width">#123 #123 #123</div>-->
+                            <!--<div class="line-horisontal"></div>-->
+                            <div class="description photoBox">
+
+                            </div>
+                            <div class="line-horisontal"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+</div>
+
+
 <div class="navbarInfo" style="display: none;">
     <div class="avatar"></div>
     <div class="name">
@@ -32,55 +90,17 @@
         <div class="centralInfo align-center" id="content">
 
 
-            <template id="photobox">
+            <template class="photobox">
                 <div class="photoBox blockWbg">
                     <img alt="">
                     <div class="description photoBox button">
                     <span class="description-capture">
                             Description:
                     </span>
-                        <span class="description">
-                            It's me.
-                    </span>
+                        <span class="description"></span>
                     </div>
                 </div>
             </template>
-
-
-            <div class="photoBox blockWbg" id="1">
-                <img src="01.jpg" alt="">
-                <div class="description photoBox button">
-                    <span class="description-capture">
-                            Description:
-                    </span>
-                    <span class="description">
-                            It's me.
-                    </span>
-                </div>
-            </div>
-            <div class="photoBox blockWbg" id="2">
-                <img src="02.jpg" alt="">
-                <div class="description photoBox button">
-                    <span class="description-capture">
-                            Description:
-                    </span>
-                    <span class="description">
-                            It's me.
-                    </span>
-                </div>
-            </div>
-            <div class="photoBox blockWbg" id="3">
-                <img src="03.jpg" alt="">
-                <div class="description photoBox button">
-                    <span class="description-capture">
-                            Description:
-                    </span>
-                    <span class="description">
-                            It's me.
-                    </span>
-                </div>
-            </div>
-
         </div>
 
         <div class="big-margin photoBox recommend ">
@@ -91,7 +111,7 @@
             <button type="submit" class="photoBox button" onclick="AddPost()">
                 <div>Add post</div>
             </button>
-            <button type="submit" class="photoBox button" onclick="ChangePostPost()">
+            <button type="submit" class="photoBox button" onclick="ChangePost()">
                 <div>Change post</div>
             </button>
             <button type="submit" class="photoBox button" onclick="DeletePost(1)">

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button onclick="useIt()">Применить</button>
+<div id="container"></div>
+<script>
+    function useIt() {
+        var content = document.querySelector('template').content;
+        var e = document.createElement('img');
+        e.src = '01.jpg';
+        document.body.appendChild(e);
+        //document.getElementsByTagName("head")[0].appendChild(e);
+        document.body.appendChild(e);
+        var span = content.querySelector('span'); // Обновить что-то в шаблоне DOM.
+        span.textContent = parseInt(span.textContent) + 1;
+        document.querySelector('#container').appendChild(content.cloneNode(true));
+    }
+</script>
+<template>
+    <div>Шаблон: <span>0</span></div>
+
+</template>
+</body>
+</html>
