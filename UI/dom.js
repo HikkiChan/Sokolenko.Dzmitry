@@ -41,48 +41,91 @@ function UpdatePost() {
     }
 }
 
-function AddPost() {
-    var content = document.querySelector('template.postUp').content;
-    document.querySelector('#forms').appendChild(content.cloneNode(true));
-
-
+function loginUser() {
+    var content = document.querySelector('template.user').content;
+    document.querySelector('#buttons').appendChild(content.cloneNode(true));
 }
 
-function AddPostUp(post) {
+function AddPost() {
+    var content = document.querySelector('template.postUp').content;
+
+
+
+    document.querySelector('#forms').appendChild(content.cloneNode(true));
+}
+
+function AddPostUp() {
     //получить данные с формы
-    post =    {
+    var post =    {
         id: '1',
         description: 'i love my club members.......i\'ll share another picture tomorrow',
-        createdAt: new Date('2018-01-01T01:00:00'),
+        createdAt: new Date(),
         author: 'qwerty',
         photoLink: '../img/1.jpg'
     }
     photoPosts.addPhotoPost(post);
-    AddPostDown();
+}
+
+function ChangePost() {
+    var content = document.querySelector('template.postCh').content;
+
+
+
+    document.querySelector('#forms').appendChild(content.cloneNode(true));
+}
+
+function ChangePostUp() {
+    //получить данные с формы
+    var post =    {
+        id: '1',
+        description: 'i love my club members.......i\'ll share another picture tomorrow',
+        createdAt: new Date(),
+        author: 'qwerty',
+        photoLink: '../img/1.jpg'
+    }
+    photoPosts.editPhotoPost(post.id, post);
 }
 
 function ViewPost(id) {
     var content = document.querySelector('template.vPost').content;
 
     var post = photoPosts.getPhotoPost(id);
+
+
+    var img = post.photoLink;
+    var imagine = content.querySelector('img');
+    imagine.setAttribute('src', img);
+
+    var imagine = content.querySelector('img.small');
+    imagine.setAttribute('src', img);
+
     var description = post.description;
-    var text = content.querySelector('description');
+    var text = content.querySelector('div.description');
     text.textContent = description;
+
+    var date = post.createdAt;
+    var dateline = content.querySelector('div.date');
+    dateline.textContent = (date.getDate() < 10 ? '0' + date.getDate() : date.getDate()) + '.' + (date.getMonth() < 9 ? '0' + (date.getMonth() + 1) : date.getMonth()+1) + '.' + date.getFullYear();
+
+    var nickname = post.author;
+    var nick = content.querySelector('div.name');
+    nick.textContent = nickname;
 
     document.querySelector('#forms').appendChild(content.cloneNode(true));
 }
 
-function AddPostDown() {
-    //удалить загруженый темпл
-}
+function DeletePost() {
 
-function DeletePost(id) {
-
+    id = 1
     photoPosts.removePhotoPost(id);
     document.querySelector('.body > .align-border .content .centralInfo').removeChild();
 }
 
-function ChangePost() {
+function Registration() {
 
-    //photoPosts.addPhotoPost(post);
+}
+
+function Authorization() {
+
+    loginUser();
 }

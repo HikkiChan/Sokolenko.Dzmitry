@@ -138,8 +138,11 @@ body {
     height: 100%;
 }
 
+textarea::-webkit-input-placeholder {
+    color: black;
+}
 
-html, body {
+html, body, textarea {
     height: 100%;
     font-family: 'Noto Sans', sans-serif;
 }
@@ -316,4 +319,49 @@ textarea.description.photoBox {
 
 .post form {
     width: 100%;
+}
+
+.registration > .center {
+    width: 600px;
+}
+
+textarea::-webkit-scrollbar {
+    width: 10px;
+
+}
+
+.display-none
+{
+    opacity: 0;
+}
+
+.super-small {
+    width: 50px;
+}
+
+.registration .image {
+    justify-content: space-around;
+}
+
+div.photoBox > div.image + div.right-panel {
+    width: inherit;
+}
+
+.login .right-panel {
+    width: 60%;
+    margin: auto;
+}
+
+.login a {
+    text-decoration: none;
+    font-style: italic;
+}
+
+.login textarea {
+    outline: none;
+    height: 200px;
+}
+
+.login textarea {
+    resize: none;
 }
