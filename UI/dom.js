@@ -1,5 +1,7 @@
 var usedPhotoPosts = []
 
+var userName = ''
+
 function UpdatePost() {
     for(var l = 0; l < 10; l++) {
         var id = 1;
@@ -44,54 +46,85 @@ function UpdatePost() {
 function loginUser() {
     var content = document.querySelector('template.user').content;
     document.querySelector('#buttons').appendChild(content.cloneNode(true));
+
+    document.querySelector('#buttons').removeChild(document.querySelector('div.anon'));
 }
+
+
 
 function AddPost() {
     var content = document.querySelector('template.postUp').content;
-
-
-
     document.querySelector('#forms').appendChild(content.cloneNode(true));
+    document.getElementById('loadAddPost').addEventListener('click', AddPostUp);
 }
 
 function AddPostUp() {
     //получить данные с формы
+    var newPhoto = document.getElementById('addPhoto').value;
+    var newDescription = document.getElementById('addDescription').value;
+
+    if(newPhoto == "" || newDescription == "") {
+        alert("Введены некоректные данные");
+    }
+
     var post =    {
-        id: '1',
-        description: 'i love my club members.......i\'ll share another picture tomorrow',
+        id: photoPosts.getLength()+1,
+        description: newDescription,
         createdAt: new Date(),
-        author: 'qwerty',
-        photoLink: '../img/1.jpg'
+        author: userName,
+        photoLink: newPhoto
     }
     photoPosts.addPhotoPost(post);
 }
 
+function CloseAddPost(event) {
+    var target = event.target;
+    if (target.className == 'wrapper')
+        document.querySelector('#forms').removeChild(document.getElementById('addPost'));
+}
+
 function ChangePost() {
     var content = document.querySelector('template.postCh').content;
-
-
-
     document.querySelector('#forms').appendChild(content.cloneNode(true));
+    document.getElementById('loadChangePost').addEventListener('click', ChangePostUp);
 }
 
 function ChangePostUp() {
     //получить данные с формы
+    var newId = document.getElementById('newId').value;
+    var newPhoto = document.getElementById('newPhoto').value;
+    var newDescription = document.getElementById('newDescription').value;
+
     var post =    {
-        id: '1',
-        description: 'i love my club members.......i\'ll share another picture tomorrow',
+        id: newId,
+        description: newDescription,
         createdAt: new Date(),
-        author: 'qwerty',
-        photoLink: '../img/1.jpg'
+        author: userName,
+        photoLink: newPhoto
     }
-    photoPosts.editPhotoPost(post.id, post);
+
+    if(photoPosts.validatePhotoPost(post) || !newPhoto == "") {
+        photoPosts.editPhotoPost(newId, post);
+    } else {
+        alert("Введены некоректные данные");
+    }
+}
+
+function ClosePostCh(event) {
+    var target = event.target;
+    if (target.className == 'wrapper')
+        document.querySelector('#forms').removeChild(document.getElementById('postCh'));
+}
+
+function CloseViewPost(event) {
+    var target = event.target;
+    if (target.className == 'wrapper')
+        document.querySelector('#forms').removeChild(document.getElementById('vPost'));
 }
 
 function ViewPost(id) {
     var content = document.querySelector('template.vPost').content;
-
     var post = photoPosts.getPhotoPost(id);
-
-
     var img = post.photoLink;
     var imagine = content.querySelector('img');
     imagine.setAttribute('src', img);
@@ -116,9 +149,9 @@ function ViewPost(id) {
 
 function DeletePost() {
 
-    id = 1
+    id = 3;
     photoPosts.removePhotoPost(id);
-    document.querySelector('.body > .align-border .content .centralInfo').removeChild();
+    document.querySelector('#content').removeChild(document.getElementById(id));
 }
 
 function Registration() {

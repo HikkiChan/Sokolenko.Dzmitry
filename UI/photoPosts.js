@@ -145,15 +145,18 @@ var photoPosts = (function() {
         return a.createdAt - b.createdAt;
     }
 
-    function validatePhotoPost(post) {
-        if (!post.description || post.description.length >= 200)
-            return false;
-        if (!post.createdAt || !post.author || !post.photoLink)
-            return false;
-        return post.author.length != 0 && post.photoLink.length != 0;
-    }
+
 
     return {
+        validatePhotoPost: function(post) {
+            if (!post.description || post.description.length >= 200)
+                return false;
+            if (!post.createdAt || !post.author || !post.photoLink)
+                return false;
+            return post.author.length != 0 && post.photoLink.length != 0;
+        },
+
+
         getPhotoPost: function(id) {
             return photoPosts.find(
                 function (item, i, arr) {
@@ -184,7 +187,9 @@ var photoPosts = (function() {
         },
 
         removePhotoPost: function(id) {
-            photoPosts.splice(photoPosts.indexOf(getPhotoPost(id)), 1);
+            var removeIndex = photoPosts.indexOf(this.getPhotoPost(id));
+            photoPosts[removeIndex].isDeleted = true;
+            //photoPosts.splice(photoPosts.indexOf(getPhotoPost(id)), 1);
         },
 
         editPhotoPost: function(id, photoPost) {

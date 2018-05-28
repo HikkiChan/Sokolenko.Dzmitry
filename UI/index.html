@@ -16,7 +16,7 @@
 <div id="forms">
 
     <template class="postUp">
-        <div class="wrapper">
+        <div class="wrapper" id="addPost" onclick="CloseAddPost(event)">
             <div class="center">
                 <div class="photoBox">
                     <!--<div class="image display-flex display-flex-column">-->
@@ -25,14 +25,13 @@
                     <div class="right-panel post">
                         <div class="display-flex display-flex-column wrapper-right">
                             <form action="123" method="post">
-                                <input name="user-file" type="file" class="hashtags photoBox border-width">
+                                <input name="user-file" id="addPhoto" type="file" class="hashtags photoBox border-width">
                                 <div class="line-horisontal"></div>
                                 <!--<textarea class="description photoBox" aria-valuetext="" placeholder="Description"></textarea>-->
-                                <input class="hashtags description photoBox" type="text" name="Description">
+                                <input id="addDescription" class="hashtags description photoBox" type="text" name="Description">
                                 <div class="line-horisontal"></div>
-                                <button class="wrapper-round" onclick="AddPostUp()">
-                                    <!--<img class="small super-small" src="enter.png" alt="">-->
-                                    <input type="image" class="small super-small" src="enter.png"  alt="Ok">
+                                <button class="wrapper-round" onclick="return false" id="loadAddPost">
+                                    <<img class="small super-small" src="enter.png" alt="">
                                 </button>
                             </form>
                         </div>
@@ -43,7 +42,7 @@
     </template>
 
     <template class="vPost">
-        <div class="wrapper">
+        <div class="wrapper" id="vPost" onclick="CloseViewPost(event)">
             <div class="center">
                 <div class="photoBox">
                     <div class="image display-flex display-flex-column">
@@ -70,25 +69,21 @@
     </template>
 
     <template class="postCh">
-        <div class="wrapper">
+        <div class="wrapper" id="postCh" onclick="ClosePostCh(event)">
             <div class="center">
                 <div class="photoBox">
-                    <!--<div class="image display-flex display-flex-column">-->
-                    <!--<img src="img/02.jpg" alt="" class="post">-->
-                    <!--</div>-->
                     <div class="right-panel post">
                         <div class="display-flex display-flex-column wrapper-right">
-                            <form action="123" method="post">
-                                <input name="id" type="text" class="hashtags photoBox border-width">
+                            <form action="">
+                                <input name="id" id="newId" type="text" class="hashtags photoBox border-width">
                                 <div class="line-horisontal"></div>
-                                <input name="photo" type="file" class="hashtags photoBox border-width">
+                                <input name="photo" id="newPhoto" type="file" class="hashtags photoBox border-width">
                                 <div class="line-horisontal"></div>
                                 <!--<textarea class="description photoBox" aria-valuetext="" placeholder="Description"></textarea>-->
-                                <input class="hashtags description photoBox" type="text" name="Description">
+                                <input id="newDescription" class="hashtags description photoBox" type="text" name="Description">
                                 <div class="line-horisontal"></div>
-                                <button class="wrapper-round" onclick="AddPostUp()">
-                                    <!--<img class="small super-small" src="enter.png" alt="">-->
-                                    <input type="image" class="small super-small" src="enter.png"  alt="Ok">
+                                <button class="wrapper-round" onclick="return false" id="loadChangePost">
+                                    <img class="small super-small" src="enter.png" alt="Ok">
                                 </button>
                             </form>
                         </div>
@@ -97,8 +92,6 @@
             </div>
         </div>
     </template>
-
-
 
     <div class="wrapper registration" style="display: none;">
         <div class="center">
