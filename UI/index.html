@@ -24,7 +24,7 @@
                     <!--</div>-->
                     <div class="right-panel post">
                         <div class="display-flex display-flex-column wrapper-right">
-                            <form action="123" method="post">
+                            <form action="" method="post">
                                 <input name="user-file" id="addPhoto" type="file" class="hashtags photoBox border-width">
                                 <div class="line-horisontal"></div>
                                 <!--<textarea class="description photoBox" aria-valuetext="" placeholder="Description"></textarea>-->
@@ -69,20 +69,40 @@
     </template>
 
     <template class="postCh">
-        <div class="wrapper" id="postCh" onclick="ClosePostCh(event)">
+    <div class="wrapper" id="postCh" onclick="ClosePostCh(event)">
+        <div class="center">
+            <div class="photoBox">
+                <div class="right-panel post">
+                    <div class="display-flex display-flex-column wrapper-right">
+                        <form action="">
+                            <input name="id" id="newId" type="text" class="hashtags photoBox border-width">
+                            <div class="line-horisontal"></div>
+                            <input name="photo" id="newPhoto" type="file" class="hashtags photoBox border-width">
+                            <div class="line-horisontal"></div>
+                            <!--<textarea class="description photoBox" aria-valuetext="" placeholder="Description"></textarea>-->
+                            <input id="newDescription" class="hashtags description photoBox" type="text" name="Description">
+                            <div class="line-horisontal"></div>
+                            <button class="wrapper-round" onclick="return false" id="loadChangePost">
+                                <img class="small super-small" src="enter.png" alt="Ok">
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+    <template class="postDel">
+        <div class="wrapper" id="postDel" onclick="ClosePostDel(event)">
             <div class="center">
                 <div class="photoBox">
                     <div class="right-panel post">
                         <div class="display-flex display-flex-column wrapper-right">
                             <form action="">
-                                <input name="id" id="newId" type="text" class="hashtags photoBox border-width">
+                                <input name="id" id="delId" type="text" class="hashtags photoBox border-width">
                                 <div class="line-horisontal"></div>
-                                <input name="photo" id="newPhoto" type="file" class="hashtags photoBox border-width">
-                                <div class="line-horisontal"></div>
-                                <!--<textarea class="description photoBox" aria-valuetext="" placeholder="Description"></textarea>-->
-                                <input id="newDescription" class="hashtags description photoBox" type="text" name="Description">
-                                <div class="line-horisontal"></div>
-                                <button class="wrapper-round" onclick="return false" id="loadChangePost">
+                                <button class="wrapper-round" onclick="return false" id="loadPostDel">
                                     <img class="small super-small" src="enter.png" alt="Ok">
                                 </button>
                             </form>
@@ -93,83 +113,83 @@
         </div>
     </template>
 
-    <div class="wrapper registration" style="display: none;">
-        <div class="center">
-            <div class="photoBox">
-                <div class="image display-flex display-flex-column">
-                    <div class="user display-flex display-flex-column">
-                        <div class="wrapper-round">
-                            <img class="small" src="02.jpg" alt="">
-                        </div>
+    <template class="registrationForm">
+        <div class="wrapper registration" id="registrationForm" onclick="CloseRegistrationForm(event)">
+            <div class="center">
+                <div class="photoBox">
+                    <div class="image display-flex display-flex-column">
+                        <button class="wrapper-round" onclick="return false" id="loadRegistration">
+                            <img class="small super-small" src="enter.png" alt="">
+                        </button>
                     </div>
-                    <button class="wrapper-round">
-                        <img class="small super-small" src="enter.png" alt="">
-                    </button>
-                </div>
-                <div class="right-panel">
-                    <form action="123">
-                        <div class="display-flex display-flex-column wrapper-right">
-                            <div class="capture">
-                                Registration
-                            </div>
-                            <div class="line-horisontal"></div>
+                    <div class="right-panel">
+                        <form action="">
+                            <div class="display-flex display-flex-column wrapper-right">
+                                <div class="capture">
+                                    Registration
+                                </div>
+                                <div class="line-horisontal"></div>
 
-                            <input type="text" class="hashtags  photoBox border-width" placeholder="NICKNAME" />
-                            <div class="line-horisontal display-none"></div>
-                            <input type="text" class="hashtags  photoBox border-width" placeholder="MAIL">
-                            <input type="text" class="hashtags  photoBox border-width" placeholder="PASSWORD">
-                            <input type="text" class="hashtags  photoBox border-width" placeholder="REPEAT PASSWORD">
-                        </div>
-                    </form>
+                                <input id="newNick" type="text" class="hashtags  photoBox border-width" placeholder="NICKNAME" />
+                                <div class="line-horisontal display-none"></div>
+                                <input id="newMail" type="text" class="hashtags  photoBox border-width" placeholder="MAIL">
+                                <input id="newPassword1" type="text" class="hashtags  photoBox border-width" placeholder="PASSWORD">
+                                <input id="newPassword2" type="text" class="hashtags  photoBox border-width" placeholder="REPEAT PASSWORD">
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </template>
 
-    <div class="wrapper registration login" style="display: none;">
-        <div class="center">
-            <div class="photoBox">
+    <template class="authorization">
+        <div class="wrapper registration login" id="authorization" onclick="CloseAuthorization(event)">
+            <div class="center">
+                <div class="photoBox">
 
-                <div class="right-panel">
-                    <form action="123">
-                        <div class="display-flex display-flex-column wrapper-right">
-                            <div class="capture">
-                                Login
+                    <div class="right-panel">
+                        <form action="">
+                            <div class="display-flex display-flex-column wrapper-right">
+                                <div class="capture">
+                                    Login
+                                </div>
+                                <div class="line-horisontal"></div>
+
+                                <input id="nick" type="text" class="hashtags  photoBox border-width" placeholder="NICKNAME" />
+                                <div class="line-horisontal display-none"></div>
+                                <input id="pass" type="text" class="hashtags  photoBox border-width" placeholder="PASSWORD">
+                                <div class="line-horisontal"></div>
+                                <div>
+                                    <a href="123">forgot password</a>
+                                </div>
+                                <div class="line-horisontal"></div>
+                                <div>
+                                    <a href="123">registration</a>
+                                </div>
+                                <div class="line-horisontal"></div>
+                                <div class="line-horisontal display-none"></div>
+                                <div class="line-horisontal display-none"></div>
+                                <div class="line-horisontal display-none"></div>
+
+                                <button class="wrapper-round" onclick="return false" id="loadAuthorization">
+                                    <img class="small super-small" src="enter.png" alt="">
+                                </button>
                             </div>
-                            <div class="line-horisontal"></div>
-
-                            <input type="text" class="hashtags  photoBox border-width" placeholder="NICKNAME" />
-                            <div class="line-horisontal display-none"></div>
-                            <input type="text" class="hashtags  photoBox border-width" placeholder="MAIL">
-                            <div class="line-horisontal"></div>
-                            <div>
-                                <a href="123">forgot password</a>
-                            </div>
-                            <div class="line-horisontal"></div>
-                            <div>
-                                <a href="123">registration</a>
-                            </div>
-                            <div class="line-horisontal"></div>
-                            <div class="line-horisontal display-none"></div>
-                            <div class="line-horisontal display-none"></div>
-                            <div class="line-horisontal display-none"></div>
-
-                            <button class="wrapper-round">
-                                <img class="small super-small" src="enter.png" alt="">
-                            </button>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </template>
+
 
     <div class="wrapper registration login error" style="display: none;">
         <div class="center">
             <div class="photoBox">
 
                 <div class="right-panel">
-                    <form action="123">
+                    <form action="">
                         <div class="display-flex display-flex-column wrapper-right">
                             <div class="capture">
                                 Oops... Error
@@ -179,12 +199,12 @@
 
                             <div class="line-horisontal"></div>
                             <div>
-                                <a href="123">Have problems? Write a message to this mail:</a>
+                                <a href="">Have problems? Write a message to this mail:</a>
                             </div>
                             <div class="line-horisontal display-none"></div>
 
                             <div>
-                                <a href="123">mail@mail.ru</a>
+                                <a href="">mail@mail.ru</a>
                             </div>
                             <div class="line-horisontal display-none"></div>
                             <div class="line-horisontal display-none"></div>
@@ -210,9 +230,9 @@
     <div class="setting">
     </div>
 </div>
-<form class="navbar navbarFind" action="123" method="post">
+<form class="navbar navbarFind" action="" method="post">
     <input class="navbarFindTextField" type="text" name="find" id="find">
-    <button type="submit" class="navbarFindBotton">
+    <button type="submit" class="navbarFindBotton" onclick="return false" id="filterFind">
         <div>Find</div>
     </button>
 </form>
@@ -237,28 +257,45 @@
         <div class="big-margin photoBox recommend " id="buttons">
 
             <div class="photoBox button">
-                <div>Hello, User</div>
+                <div id="hello">Hello, User</div>
             </div>
 
-            <div class="anon" style="display: block;">
-                <button type="submit" class="photoBox button" onclick="Registration()">
-                    <div>Registration</div>
-                </button>
-                <button type="submit" class="photoBox button" onclick="Authorization()">
-                    <div>Authorization</div>
-                </button>
-            </div>
+            <!--<div class="anon" style="display: block;">-->
+                <!--<button type="submit" class="photoBox button" onclick="Registration()">-->
+                    <!--<div>Registration</div>-->
+                <!--</button>-->
+                <!--<button type="submit" class="photoBox button" onclick="Authorization()">-->
+                    <!--<div>Authorization</div>-->
+                <!--</button>-->
+            <!--</div>-->
+
+            <template class="anon">
+                <div id="anonB">
+                    <button type="submit" class="photoBox button" onclick="Registration()">
+                        <div>Registration</div>
+                    </button>
+                    <button type="submit" class="photoBox button" onclick="Authorization()">
+                        <div>Authorization</div>
+                    </button>
+                </div>
+            </template>
 
             <template class="user">
-                <button type="submit" class="photoBox button" onclick="AddPost()">
-                    <div>Add post</div>
-                </button>
-                <button type="submit" class="photoBox button" onclick="ChangePost()">
-                    <div>Change post</div>
-                </button>
-                <button type="submit" class="photoBox button" onclick="DeletePost()">
-                    <div>Delete post</div>
-                </button>
+                <div id="userB">
+                    <button type="submit" class="photoBox button" onclick="AddPost()">
+                        <div>Add post</div>
+                    </button>
+                    <button type="submit" class="photoBox button" onclick="ChangePost()">
+                        <div>Change post</div>
+                    </button>
+                    <button type="submit" class="photoBox button" onclick="DeletePost()">
+                        <div>Delete post</div>
+                    </button>
+                    <button type="submit" class="photoBox button" onclick="LogOut()">
+                        <div>LogOut</div>
+                    </button>
+                </div>
+
             </template>
 
             <button type="submit" class="photoBox button" onclick="UpdatePost()">
