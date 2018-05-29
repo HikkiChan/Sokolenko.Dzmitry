@@ -151,9 +151,9 @@ var photoPosts = (function() {
         validatePhotoPost: function(post) {
             if (!post.description || post.description.length >= 200)
                 return false;
-            if (!post.createdAt || !post.author)
+            if (!post.createdAt || !post.author || !post.photoLink)
                 return false;
-            return post.author.length != 0;
+            return post.author.length != 0 && post.photoLink.length != 0;
         },
 
 
@@ -162,20 +162,20 @@ var photoPosts = (function() {
                 function (item, i, arr) {
                     return item.id == id;
                 }
-            )
+            );
         },
 
         getPhotoPosts: function(skip, top, filterConfig) {
             if (filterConfig.author)
-                result = photoPosts.filter(function (a) {
+                this.result = photoPosts.filter(function (a) {
                     return a.author == filterConfig.author;
                 });
             if (filterConfig.createdAt)
-                result = photoPosts.filter(function (a) {
+                this.result = photoPosts.filter(function (a) {
                     return a.createdAt == filterConfig.createdAt;
                 });
-            result.sort(compareDates);
-            return result.slice(skip, skip + top);
+            this.result.sort(compareDates);
+            return this.result.slice(skip, skip + top);
         },
 
         addPhotoPost: function(photoPost) {
@@ -193,13 +193,13 @@ var photoPosts = (function() {
         },
 
         editPhotoPost: function(id, photoPost) {
-            post = this.getPhotoPost(id);
-            photoPost.createdAt = post.createdAt;
-            photoPost.author = post.author;
-            photoPost.id = post.id;
+            this.post = this.getPhotoPost(id);
+            photoPost.createdAt = this.post.createdAt;
+            photoPost.author = this.post.author;
+            photoPost.id = this.post.id;
             if (this.validatePhotoPost(photoPost)) {
-                post.description = photoPost.description;
-
+                this.post.description = photoPost.description;
+                this.post.photoLink = photoPost.photoLink;
                 return true;
             }
             return false;
@@ -208,6 +208,6 @@ var photoPosts = (function() {
         getLength: function () {
             return photoPosts.length;
         }
-    }
+    };
 })();
 

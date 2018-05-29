@@ -22,28 +22,26 @@ function UpdatePost() {
             }
         }
 
-        var lPP = photoPosts.getLength() + 1;
+        var lPP = this.photoPosts.getLength() + 1;
 
         if(id < lPP) {
             var content = document.querySelector('template.photobox').content;
 
             usedPhotoPosts.push(id);
 
-            var post = photoPosts.getPhotoPost(id);
-
-            var aut = post.author;
+            var post = this.photoPosts.getPhotoPost(id);
 
 
-                var img = post.photoLink;
-                var description = post.description;
-                var idteg = content.querySelector('div.blockWbg');
-                var text = content.querySelector('span.description');
-                var imagine = content.querySelector('img');
-                idteg.setAttribute('id', id + "");
-                text.textContent = description;
-                imagine.setAttribute('src', img);
-                imagine.setAttribute('onclick', 'ViewPost(' + id + ')');
-                document.querySelector('#content').appendChild(content.cloneNode(true));
+            var img = post.photoLink;
+            var description = post.description;
+            var idteg = content.querySelector('div.blockWbg');
+            var text = content.querySelector('span.description');
+            var imagine = content.querySelector('img');
+            idteg.setAttribute('id', id + '');
+            text.textContent = description;
+            imagine.setAttribute('src', img);
+            imagine.setAttribute('onclick', 'ViewPost(' + id + ')');
+            document.querySelector('#content').appendChild(content.cloneNode(true));
 
 
 
@@ -64,18 +62,18 @@ function AddPostUp() {
     var newPhoto = document.getElementById('addPhoto').value;
     var newDescription = document.getElementById('addDescription').value;
 
-    if(newPhoto === "" || newDescription === "") {
-        alert("Введены некоректные данные");
+    if(newPhoto === '' || newDescription === '') {
+        alert('Введены некоректные данные');
     }
 
     var post =    {
-        id: photoPosts.getLength()+1,
+        id: this.photoPosts.getLength()+1,
         description: newDescription,
         createdAt: new Date(),
         author: localStorage.getItem('Name'),
         photoLink: newPhoto
     };
-    photoPosts.addPhotoPost(post);
+    this.photoPosts.addPhotoPost(post);
 }
 
 function CloseAddPost(event) {
@@ -101,13 +99,13 @@ function ChangePostUp() {
         description: newDescription,
         createdAt: new Date(),
         author: localStorage.getItem('Name'),
-        photoLink: ""
+        photoLink: ''
     };
 
-    if(photoPosts.validatePhotoPost(post)) {
-        photoPosts.editPhotoPost(newId, post);
+    if(this.photoPosts.validatePhotoPost(post)) {
+        this.photoPosts.editPhotoPost(newId, post);
     } else {
-        alert("Введены некоректные данные");
+        alert('Введены некоректные данные');
     }
 }
 
@@ -125,7 +123,7 @@ function CloseViewPost(event) {
 
 function ViewPost(id) {
     var content = document.querySelector('template.vPost').content;
-    var post = photoPosts.getPhotoPost(id);
+    var post = this.photoPosts.getPhotoPost(id);
     var img = post.photoLink;
     var imagine = content.querySelector('img');
     imagine.setAttribute('src', img);
@@ -161,10 +159,10 @@ function DeletePostUp() {
     //получить данные с формы
     var delId = document.getElementById('delId').value;
 
-    if(delId == null || delId > photoPosts.getLength()) {
-        alert("Введены некоректные данные");
+    if(delId == null || delId > this.photoPosts.getLength()) {
+        alert('Введены некоректные данные');
     } else {
-        photoPosts.removePhotoPost(delId);
+        this.photoPosts.removePhotoPost(delId);
         document.querySelector('#content').removeChild(document.getElementById(delId));
     }
 }
@@ -208,7 +206,7 @@ function AuthorizationUp() {
     var passTry = document.getElementById('pass').value;
 
     if (nickTry == null || passTry == null || nickTry != name || passTry != pass) {
-        alert("Введены некоректные данные");
+        alert('Введены некоректные данные');
     } else {
         localStorage.setItem('Name', nickTry);
         localStorage.setItem('Password', passTry);
@@ -253,11 +251,11 @@ function onLoad() {
         var content = document.querySelector('template.user').content;
         document.querySelector('#buttons').appendChild(content.cloneNode(true));
     } else {
-        var content = document.querySelector('template.anon').content;
+        content = document.querySelector('template.anon').content;
         document.querySelector('#buttons').appendChild(content.cloneNode(true));
     }
 
-    document.getElementById('filterFind').addEventListener('click', findFilt)
+    document.getElementById('filterFind').addEventListener('click', findFilt);
 
     helloAnon();
 }
@@ -285,14 +283,14 @@ function findFilt() {
             }
         }
 
-        var lPP = photoPosts.getLength() + 1;
+        var lPP = this.photoPosts.getLength() + 1;
 
         if(id < lPP) {
             var content = document.querySelector('template.photobox').content;
 
             usedPhotoPosts.push(id);
 
-            var post = photoPosts.getPhotoPost(id);
+            var post = this.photoPosts.getPhotoPost(id);
 
             var aut = post.author;
 
@@ -302,7 +300,7 @@ function findFilt() {
                 var idteg = content.querySelector('div.blockWbg');
                 var text = content.querySelector('span.description');
                 var imagine = content.querySelector('img');
-                idteg.setAttribute('id', id + "");
+                idteg.setAttribute('id', id + '');
                 text.textContent = description;
                 imagine.setAttribute('src', img);
                 imagine.setAttribute('onclick', 'ViewPost(' + id + ')');
@@ -324,9 +322,9 @@ function helloAnon() {
     var text =  localStorage.getItem('Name');
 
     if(text != 0) {
-        document.getElementById('hello').innerText = "Hello, " + text;
+        document.getElementById('hello').innerText = 'Hello, ' + text;
     } else {
-        document.getElementById('hello').innerText = "Hello, Anon";
+        document.getElementById('hello').innerText = 'Hello, Anon';
     }
 
 
