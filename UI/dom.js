@@ -93,7 +93,7 @@ function ChangePost() {
 function ChangePostUp() {
     //получить данные с формы
     var newId = document.getElementById('newId').value;
-    var newPhoto = document.getElementById('newPhoto').value;
+
     var newDescription = document.getElementById('newDescription').value;
 
     var post =    {
@@ -101,10 +101,10 @@ function ChangePostUp() {
         description: newDescription,
         createdAt: new Date(),
         author: localStorage.getItem('Name'),
-        photoLink: newPhoto
+        photoLink: ""
     };
 
-    if(photoPosts.validatePhotoPost(post) || !(newPhoto === "")) {
+    if(photoPosts.validatePhotoPost(post)) {
         photoPosts.editPhotoPost(newId, post);
     } else {
         alert("Введены некоректные данные");
